@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/selenium-remote-driver-2.53.1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/selenium-chrome-driver-2.53.1.jar"/>
@@ -20,5 +19,7 @@
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/activation.jar"/>
 	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/mail.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_121"/>
+	<classpathentry kind="lib" path="C:/Users/bsnpc1g/Documents/WorkSpace/Eclipse/PRACTICE/PractiseDemo/lib/jedis-3.1.0-m1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
