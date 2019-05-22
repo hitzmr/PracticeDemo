@@ -6,6 +6,8 @@ public class ThreadDemo01 extends Thread{
 	@Override
 	public void run() {
 		for(int i=0; i<10; i++){
+			if(i == 5)
+				this.yield();
 			System.out.println(Thread.currentThread().getName() + " i="+i);
 		}
 	}
