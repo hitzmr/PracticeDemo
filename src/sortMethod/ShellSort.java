@@ -2,16 +2,16 @@ package sortMethod;
 
 import java.util.Arrays;
 
-public class ShellSort {
+public class ShellSort implements MySort{
+//
+//	public static void main(String[] args) {
+//		int[] arr = { 5, 4, 3, 2, 1, 10, 8, 9, 7 };
+//		sort(arr);
+//		System.out.println(Arrays.toString(arr));
+//
+//	}
 
-	public static void main(String[] args) {
-		int[] arr = { 5, 4, 3, 2, 1, 10, 8, 9, 7 };
-		sort(arr);
-		System.out.println(Arrays.toString(arr));
-
-	}
-
-	public static void sort(int[] arr){
+	public int[] sort(int[] arr){
 		// 对 arr 进行拷贝，不改变参数内容
 		int gap = 1;
 		while (gap < arr.length) {
@@ -30,6 +30,6 @@ public class ShellSort {
 			}
 			gap = (int) Math.floor(gap / 3);
 		}
-
+		return arr;
 	}
 }

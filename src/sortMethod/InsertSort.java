@@ -2,15 +2,16 @@ package sortMethod;
 
 import java.util.Arrays;
 
-public class InsertSort {
+public class InsertSort implements MySort{
 
-	public static void main(String[] args) {
-		int[] arr = { 5, 4, 3, 2, 1 };
-		sort(arr);
-		System.out.println(Arrays.toString(arr));
-	}
+//	public static void main(String[] args) {
+//		int[] arr = { 5, 4, 3, 2, 1 };
+//		sort(arr);
+//		System.out.println(Arrays.toString(arr));
+//	}
 
-	public static void sort(int[] arr) {
+	@Override
+	public int[] sort(int[] arr) {
 		// 从下标为1的元素开始选择合适的位置插入，因为下标为0的只有一个元素，默认是有序的
 		for (int i = 1; i < arr.length; i++) {
 			// 记录要插入的数据
@@ -27,5 +28,7 @@ public class InsertSort {
 				arr[j] = tmp;
 			}
 		}
+		
+		return arr;
 	}
 }

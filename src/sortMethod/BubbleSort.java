@@ -2,16 +2,17 @@ package sortMethod;
 
 import java.util.Arrays;
 
-public class BubbleSort {
+public class BubbleSort implements MySort{
 
-	public static void main(String[] args) {
-		int[] arr = {5,4,3,2,1};
-		bubbleSort(arr);
-		System.out.println(Arrays.toString(arr));
-
-	}
+//	public static void main(String[] args) {
+//		int[] arr = {5,4,3,2,1};
+//		bubbleSort(arr);
+//		System.out.println(Arrays.toString(arr));
+//
+//	}
 	
-	public static void bubbleSort(int[] arr){
+	@Override
+	public int[] sort(int[] arr){
 		int temp = 0;
 		boolean isSorted;
 		int compareTimes = 0;
@@ -34,6 +35,8 @@ public class BubbleSort {
 			System.out.println(Arrays.toString(arr));
 		}
 		System.out.println(compareTimes);
+		
+		return arr;
 	}
 
 }
