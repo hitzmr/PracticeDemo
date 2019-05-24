@@ -15,8 +15,13 @@ public class TestMethod {
 //		afterSort = mySort.sort(arr);
 //		System.out.println(Arrays.toString(afterSort));
 		
-		MySort mySort = new HeapSort();
-		afterSort = mySort.sort(arr);
+//		MySort mySort = new HeapSort();
+//		afterSort = mySort.sort(arr);
+//		System.out.println(Arrays.toString(afterSort));
+//		
+		int[] arr1 = {87,45,78,32,17,65,53,9,122,133};
+		MySort my = new HeapSort();
+		afterSort = my.sort(arr1);
 		System.out.println(Arrays.toString(afterSort));
 	}
 

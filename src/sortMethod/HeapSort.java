@@ -4,54 +4,71 @@ import java.util.Arrays;
 
 public class HeapSort implements MySort{
 
+//	public static void main(String[] args) {
+//		int[] arr = {87,45,78,32,17,65,53,9,122,133};
+//		sort(arr);
+//		System.out.println("After the heap was sorted : "
+//				+ Arrays.toString(arr));
+//
+//	}
+
+	public static int[] buildMaxHeap(int[] arr) {
+		// 从堆的最后一个节点开始，找到其父节点,从此节点逐渐往堆的根部走，去调整每一个以此节点为根的子节点
+		int length = arr.length;
+		for (int parent = (arr.length - 2) / 2; parent >= 0; parent--) {
+			heapfy(arr, parent, arr.length);
+		}
+		return arr;
+
+	}
+
+	/**
+	 *
+	 * @param arr
+	 * @param parent
+	 */
+	public static void heapfy(int[] arr, int parent, int length) {
+		int temp;
+
+		/**
+		 * 注意理解此循环的作用 child = 2*parent+1是得到父节点的左子节点 循环递增child =
+		 * 2*child+1的意思是以先得到的父节点为根节点的某个
+		 * “单位树”（理解为父亲-儿子这种只有两代的树）调整完了，这个时候如果儿子还有后代的话，那么我就要去调整儿子的“单位树”（儿子-孙子）了
+		 */
+		for (int child = 2 * parent + 1; child < length; child = 2 * child + 1) {
+
+			// 注意保证child+1<arr.length，因为在循环的条件中并没有保证这一点，所以在这里要放在前面
+			if (child < length - 1 && arr[child] < arr[child + 1])
+				child++;
+
+			if (arr[child] <= arr[parent]) {
+				break;
+			} else {
+				temp = arr[child];
+				arr[child] = arr[parent];
+				arr[parent] = temp;
+				// 调整完父亲-儿子的树之后，就要调节儿子-孙子树了
+				parent = child;
+			}
+
+		}
+
+	}
+
 	@Override
-    public int[] sort(int[] sourceArray) {
-        // 对 arr 进行拷贝，不改变参数内容
-        int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+	public int[] sort(int[] arr) {
+		int[] array = buildMaxHeap(arr);
+		System.out.println("After the heap was created: "
+				+ Arrays.toString(array));
+		int temp;
+		for (int i = array.length - 1; i >= 1; i--) {
+			temp = array[i];
+			array[i] = array[0];
+			array[0] = temp;
+			heapfy(array, 0, i);
+		}
 
-        int len = arr.length;
+		return array;
 
-        buildMaxHeap(arr, len);
-
-        for (int i = len - 1; i > 0; i--) {
-            swap(arr, 0, i);
-            len--;
-            heapify(arr, 0, len);
-        }
-        return arr;
-    }
-
-    private void buildMaxHeap(int[] arr, int len) {
-        for (int i = (int) Math.floor(len / 2); i >= 0; i--) {
-            heapify(arr, i, len);
-        }
-    }
-
-    private void heapify(int[] arr, int i, int len) {
-        int left = 2 * i + 1;
-        int right = 2 * i + 2;
-        int largest = i;
-
-        if (left < len && arr[left] > arr[largest]) {
-            largest = left;
-        }
-
-        if (right < len && arr[right] > arr[largest]) {
-            largest = right;
-        }
-
-        if (largest != i) {
-            swap(arr, i, largest);
-            heapify(arr, largest, len);
-        }
-    }
-
-    private void swap(int[] arr, int i, int j) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-	
-	
-	
+	}
 }
