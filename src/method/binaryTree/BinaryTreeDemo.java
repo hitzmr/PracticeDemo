@@ -50,7 +50,10 @@ public class BinaryTreeDemo {
         System.out.println("\r\n 后序遍历：");
         lastOrder(nodeA);
         System.out.println("\r\n 层序遍历：");
-        LevelTravelQueue(nodeA);
+        levelTravelQueue(nodeA);
+
+        System.out.println("\r\n 二叉树深度" + getDepth(nodeA));
+        System.out.println("\r\n 二叉树最大宽度 " +getMaxWidth(nodeA));
 
 
     }
@@ -85,7 +88,7 @@ public class BinaryTreeDemo {
      * @param root
      * 借助queue的顺序性，每次遍历节点并将其子节点塞到queue最后，遍历完整个queue
      */
-    public static void LevelTravelQueue(Node root){
+    public static void levelTravelQueue(Node root){
         if(root == null)
             return;
         Queue<Node> nodeQueue = new ArrayDeque<>();
@@ -109,7 +112,68 @@ public class BinaryTreeDemo {
         }
 
     }
-}
+
+    /**
+     * 求二叉树的深度
+     */
+    public static int getDepth(Node node){
+        if(node == null)
+            return 0;
+
+        // 如果左子树或者右子树是空的，那么就要对应的去右子树或者左子树上面继续往下找
+        if(node.left == null)
+            return getDepth(node.right)+1;
+
+        if(node.right == null)
+            return getDepth(node.left)+1;
+
+        // 如果左子树右子树都非空，那么就要取左子树的子树和右子树的子树中最大深度的那个
+        int leftDep = getDepth(node.left);
+        int rightDep = getDepth(node.right);
+        return leftDep>rightDep?leftDep+1:rightDep+1;
+    }
+
+    /**
+     * 求二叉树宽度
+     * 利用嵌套while循环，外层循环得到当前队列的大小，将其当作当前层的节点个数，遍历完这些节点之后，对应的下一层节点也将全部进入队列
+     */
+    public static int getMaxWidth(Node root) {
+        if (root == null)
+            return 0;
+
+        Queue<Node> queue = new ArrayDeque<Node>();
+        int maxWitdth = 1; // 最大宽度
+        queue.add(root); // 入队
+
+        while (true) {
+            int len = queue.size(); // 当前层的节点个数
+            if (len == 0)
+                break;
+            while (len > 0) {// 如果当前层，还有节点
+                Node t = queue.poll();
+                len--;
+                if (t.left != null)
+                    queue.add(t.left); // 下一层节点入队
+                if (t.right != null)
+                    queue.add(t.right);// 下一层节点入队
+            }
+            maxWitdth = Math.max(maxWitdth, queue.size());
+        }
+        return maxWitdth;
+    }
+
+//    public static boolean isBalance(Node root){
+//        if(root == null)
+//            return true;
+//
+//        if(root.left.value < root.value && root.right.value > root.value){
+//            return isBalance(root.left)&isBalance(root.right);
+//        }else{
+//            return false;
+//        }
+//    }
+    }
+
 
 class Node implements Comparable {
     public Node(String value) {
